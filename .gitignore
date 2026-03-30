@@ -1,0 +1,22 @@
+# Research data (large / copyrighted source material — local only)
+research/
+
+# BG3 build output
+*.pak
+*.zip
+build/
+dist/
+
+# Toolkit generated files
+Generated/
+Temp/
+*.lsb
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.user
