@@ -3,18 +3,20 @@
 ## Overview
 
 ```
-[BG3 Toolkit]  ──→  edit levels/scenes (saves to BG3 Data directory)
+[BG3 Toolkit]  ──→  edit levels/scenes → Ctrl+Alt+S to save
       ↓
-[sync-from-toolkit.ps1]  ──→  copies changes into this git repo
+[build.ps1]  ──→  syncs, packs, and deploys in one step  ✅ CONFIRMED WORKING
       ↓
-[git commit + push]  ──→  version control on GitHub
+[BG3 Mod Manager]  ──→  enable mod → Export Order to Game
       ↓
-[Multitool]  ──→  pack into .pak file
-      ↓
-[BG3 Mod Manager]  ──→  install mod, set load order
-      ↓
-[BG3 Game]  ──→  test in-game
+[BG3 Game]  ──→  launch and test  ✅ LOADS WITHOUT CRASH
 ```
+
+## Your Entire Workflow (3 steps)
+
+1. **Edit** in the BG3 Toolkit → **Ctrl+Alt+S**
+2. **Double-click** `build.ps1` in Windows Explorer (right-click → Run with PowerShell)
+3. **BG3 Mod Manager** → enable TombOfHorrors → Export Order to Game → launch BG3
 
 ## Important: Where Files Live
 
