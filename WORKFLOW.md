@@ -3,9 +3,11 @@
 ## Overview
 
 ```
-[BG3 Toolkit]  ──→  edit levels/scenes
+[BG3 Toolkit]  ──→  edit levels/scenes (saves to BG3 Data directory)
       ↓
-[Project Folder]  ──→  source files (LSX, assets)
+[sync-from-toolkit.ps1]  ──→  copies changes into this git repo
+      ↓
+[git commit + push]  ──→  version control on GitHub
       ↓
 [Multitool]  ──→  pack into .pak file
       ↓
@@ -13,6 +15,19 @@
       ↓
 [BG3 Game]  ──→  test in-game
 ```
+
+## Important: Where Files Live
+
+The BG3 Toolkit saves ALL project files inside the BG3 game directory:
+```
+D:\Steam\steamapps\common\Baldurs Gate 3\Data\
+  Mods\Tomb_of_Horrors_e47b994b-fb66-3bf6-ff90-d0bcd2504e48\
+  Public\Tomb_of_Horrors_e47b994b-fb66-3bf6-ff90-d0bcd2504e48\
+  Projects\Tomb_of_Horrors_e47b994b-fb66-3bf6-ff90-d0bcd2504e48\
+  Editor\Mods\Tomb_of_Horrors_e47b994b-fb66-3bf6-ff90-d0bcd2504e48\
+```
+
+This git repo mirrors those files. Use the sync scripts to keep them in sync.
 
 ---
 
@@ -55,16 +70,26 @@
 
 ## Step 1: Edit a Level
 
-1. Launch BG3 Toolkit from Steam
-2. Open the **TombOfHorrors** project (File → Open Project → `D:\Aaron\development\Tomb of Horrors`)
+1. Launch BG3 Toolkit from Steam → click **Play** → choose **Larian Game Tools**
+2. The **Tomb_of_Horrors** project loads automatically (it lives in BG3's Data dir)
 3. Open the level you want to edit in the Level Editor
 4. Make your changes (place tiles, add objects, configure triggers, etc.)
 5. **Save** (Ctrl+S)
 
-The Toolkit saves files directly into the project folder as LSX/LSB files under:
-`Public\TombOfHorrors\Levels\WLD_TombOfHorrors\`
+The Toolkit saves files to:
+`D:\Steam\steamapps\common\Baldurs Gate 3\Data\[Mods|Public]\Tomb_of_Horrors_e47b994b-fb66-3bf6-ff90-d0bcd2504e48\`
 
 ---
+
+## Step 1.5: Sync to Git (after editing)
+
+After saving in the Toolkit, run from this repo's root:
+```powershell
+.\sync-from-toolkit.ps1
+git add -A
+git commit -m "describe your changes"
+git push
+```
 
 ## Step 2: Pack the Mod
 
@@ -132,11 +157,12 @@ D:\Aaron\development\Tomb of Horrors\
 
 ## Key File: meta.lsx
 
+Location: `Mods/Tomb_of_Horrors/meta.lsx`
 The mod's identity file. Critical fields:
-- **UUID:** `40b6fae9-56c4-4c4e-ae11-35b20d319c77` — never change this
-- **StartupLevelName:** `WLD_TombOfHorrors` — the first level that loads
-- **Name:** `Tomb of Horrors`
-- **Type:** `Adventure`
+- **UUID:** `e47b994b-fb66-3bf6-ff90-d0bcd2504e48` — never change this (toolkit-generated)
+- **StartupLevelName:** set this to the name of your entry level once created
+- **Name:** `Tomb_of_Horrors`
+- **Folder:** `Tomb_of_Horrors_e47b994b-fb66-3bf6-ff90-d0bcd2504e48`
 
 ---
 

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"D:/Aaron/development/Tomb of Horrors/Mods/TombOfHorrors\")",
+      "Bash(mkdir -p \"D:/Aaron/development/Tomb of Horrors/Public/TombOfHorrors/Assets\")",
+      "Bash(mkdir -p \"D:/Aaron/development/Tomb of Horrors/Public/TombOfHorrors/Content\")",
+      "Bash(mkdir -p \"D:/Aaron/development/Tomb of Horrors/Public/TombOfHorrors/Levels/WLD_TombOfHorrors\")",
+      "Bash(python -c \"import uuid; print\\(str\\(uuid.uuid4\\(\\)\\).upper\\(\\)\\)\")",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:docs.baldursgate3.game)",
+      "Bash(reg query:*)",
+      "Bash(wmic logicaldisk:*)"
+    ]
+  }
+}
